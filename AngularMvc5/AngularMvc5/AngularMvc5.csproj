@@ -219,6 +219,7 @@
     </Content>
     <Content Include="AngularApp\package.json" />
     <Content Include="AngularApp\.angular-cli.json" />
+    <Content Include="buildAngularApp.bat" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -294,9 +295,11 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
-       Other similar extension points exist, see Microsoft.Common.targets.
+       Other similar extension points exist, see Microsoft.Common.targets.-->
   <Target Name="BeforeBuild">
+     <Exec Condition="'$(Configuration)' == 'Release'" Command="buildAngularApp.bat" />
+	 <Exec Condition="'$(Configuration)' == 'Debug'" Command="buildAngularApp.bat" />
   </Target>
-  <Target Name="AfterBuild">
-  </Target> -->
+
+  <!-- <Target Name="AfterBuild"></Target>-->
 </Project>
